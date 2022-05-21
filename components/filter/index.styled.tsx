@@ -3,9 +3,12 @@ import ReactSelect from 'react-select'
 import { device } from 'consts/ScreenSize'
 
 export const Container = styled.div`
+	position: relative;
+	margin-bottom: 3rem;
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	z-index: 9999;
 `
 export const FilterWrapper = styled.div`
 	display: grid;
@@ -75,8 +78,12 @@ export const Select = styled(ReactSelect)`
 	.Select__control {
 		border: 0 transparent;
 		border-radius: 0;
+		z-index: 9999;
 	}
 	.Select__placeholder {
 		color: var(--filter_text);
+	}
+	> .Select_menu {
+		z-index: 9999;
 	}
 `

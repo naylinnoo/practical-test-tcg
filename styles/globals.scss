@@ -10,6 +10,7 @@
 	--filter_border: #{$filter_border};
 
 	--card_title: #{$card_title};
+	--card_background: #{$card_background};
 	--card_rarity: #{$card_rarity};
 	--card_price: #{$card_price};
 	--card_qty: #{$card_qty};
@@ -30,6 +31,7 @@ body {
 	padding: 0;
 	margin: 0;
 	background-color: var(--background);
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-family: Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+		Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+		sans-serif;
 }
