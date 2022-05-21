@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import ReactSelect from 'react-select'
+import { device } from 'consts/ScreenSize'
 
 export const Container = styled.div`
 	display: flex;
@@ -8,14 +9,8 @@ export const Container = styled.div`
 `
 export const FilterWrapper = styled.div`
 	display: grid;
-	grid-template-columns: 1.3fr 0.5fr 0.7fr 0.5fr;
+	grid-template-columns: 1fr 80px 80px 70px;
 	width: 40%;
-
-	> * {
-		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-		background-color: var(--filter_background);
-		overflow: hidden;
-	}
 
 	> :first-child {
 		border-top-left-radius: 4rem;
@@ -27,8 +22,34 @@ export const FilterWrapper = styled.div`
 	}
 
 	> :nth-child(4) {
-		border-top-right-radius: 4rem;
-		border-bottom-right-radius: 4rem;
+		> .Select__control {
+			border-top-right-radius: 4rem;
+			border-bottom-right-radius: 4rem;
+		}
+	}
+
+	@media ${device.phone} {
+		grid-template-columns: repeat(3, 1fr);
+		width: 90%;
+		gap: 20px;
+
+		> * {
+			box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+			background-color: var(--filter_background);
+			border-radius: 4rem;
+		}
+
+		> :first-child {
+			grid-column: 1 / -1;
+			border-radius: 4rem;
+		}
+
+		> :not(:first-child) {
+			border-left: 1px solid var(--filter_border);
+			> .Select__control {
+				border-radius: 4rem;
+			}
+		}
 	}
 `
 
@@ -49,7 +70,6 @@ export const Select = styled(ReactSelect)`
 	.Select__control {
 		border: 0;
 		border-radius: 0;
-		overflow: hidden;
 	}
 	.Select__placeholder {
 		color: var(--filter_text);

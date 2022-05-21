@@ -7,6 +7,7 @@ const Filter: FC = () => {
 			<FilterWrapper>
 				<Input type={'text'} placeholder={'Name...'} />
 				<Select
+					instanceId="type"
 					classNamePrefix={'Select'}
 					placeholder={'Type'}
 					components={{
@@ -14,6 +15,7 @@ const Filter: FC = () => {
 					}}
 				/>
 				<Select
+					instanceId="rarity"
 					classNamePrefix={'Select'}
 					placeholder={'Rarity'}
 					components={{
@@ -21,6 +23,7 @@ const Filter: FC = () => {
 					}}
 				/>
 				<Select
+					instanceId="set"
 					classNamePrefix={'Select'}
 					placeholder={'Set'}
 					components={{
