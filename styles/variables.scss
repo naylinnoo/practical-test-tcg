@@ -1,32 +1,34 @@
 // Colors
 $background: white;
-$background_secondary: #E5E5E5;
+$background_secondary: #f8f8f8;
 
-$button: #FDCE29;
-$button_selected: #1D1C1C;
+$button: #fdce29;
+$button_selected: #1d1c1c;
 
-$button_text: #1D1C1C;
-$button_selected_text: #FFFFFf;
+$button_text: #1d1c1c;
+$button_selected_text: #ffffff;
 
 $primary: white;
-$secondary: #298BFD;
-$alert : red;
-$success: #5DDD48;
+$secondary: #298bfd;
+$alert: red;
+$success: #5ddd48;
 
 $color_base: black;
-$color_1:#6A6969;
-$color_2:#BCBBBB;
-$color_3:#0F6DB0;
-$color_4:#FD2929;
+$color_1: #6a6969;
+$color_2: #bcbbbb;
+$color_3: #0f6db0;
+$color_4: #fd2929;
 
 $title: $color_base;
 $nav_bg: $background;
 $background: $background_secondary;
 
-$filter_background: $background;
+$filter_background: $primary;
 $filter_text: $color_2;
+$filter_border: $color_2;
 
 $card_title: $color_base;
+$card_background: $primary;
 $card_rarity: $color_3;
 $card_price: $color_1;
 $card_qty: $color_1;
@@ -35,8 +37,24 @@ $card_button_selected: $button_selected;
 $card_button_text: $button_text;
 $card_button_selected_text: $button_selected_text;
 
-$cart_bg: $background;
+$cart_bg: $primary;
 $cart_button_bg: $secondary;
 $cart_text: $primary;
 $cart_noti: $alert;
 $cart_cancel: $alert;
+$cart_total: $alert;
+$cart_clear: $color_1;
+
+$total_item_value: $alert;
+$total_price_value: $alert;
+$pay: $secondary;
+
+$item_per_card: $color_1;
+$item_quantity_left: $alert;
+$item_card_left: $alert;
+$item_card_left_text: $color_2;
+$item_quantity: $secondary;
+$item_price: $secondary;
+$item_can_go: $secondary;
+$item_cannot_go: $color_2;
+$item_not_avaiable: $alert;

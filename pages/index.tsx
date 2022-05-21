@@ -1,12 +1,14 @@
+import { Cards } from '@/components/cards'
+import Filter from '@/components/filter'
 import type { NextPage } from 'next'
-// import Navbar from '@/components/layouts/nav'
 
 const Home: NextPage = () => {
-  return (
-    <>
-      {/* <Navbar/> */}
-    </>
-  )
+	return (
+		<>
+			<Filter />
+			<Cards />
+		</>
+	)
 }
 
 export default Home
