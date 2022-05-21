@@ -12,6 +12,11 @@ export const FilterWrapper = styled.div`
 	grid-template-columns: 1fr 80px 80px 70px;
 	width: 40%;
 
+	> * {
+		border: 0;
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.03);
+	}
+
 	> :first-child {
 		border-top-left-radius: 4rem;
 		border-bottom-left-radius: 4rem;
@@ -68,7 +73,7 @@ export const Input = styled.input`
 `
 export const Select = styled(ReactSelect)`
 	.Select__control {
-		border: 0;
+		border: 0 transparent;
 		border-radius: 0;
 	}
 	.Select__placeholder {
