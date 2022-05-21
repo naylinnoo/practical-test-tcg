@@ -1,6 +1,6 @@
 // Colors
 $background: white;
-$background_secondary: #e5e5e5;
+$background_secondary: #f8f8f8;
 
 $button: #fdce29;
 $button_selected: #1d1c1c;
@@ -37,7 +37,7 @@ $card_button_selected: $button_selected;
 $card_button_text: $button_text;
 $card_button_selected_text: $button_selected_text;
 
-$cart_bg: $background;
+$cart_bg: $primary;
 $cart_button_bg: $secondary;
 $cart_text: $primary;
 $cart_noti: $alert;
