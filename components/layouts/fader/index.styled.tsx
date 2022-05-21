@@ -5,7 +5,7 @@ export const Fader = styled.div`
 	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 5rem;
+	height: 8rem;
 	z-index: 999;
 	background: linear-gradient(
 		180deg,

@@ -94,7 +94,7 @@ export const Button = styled.button`
 	border: 0;
 	border-radius: 3rem;
 
-	box-shadow: 0px 3px 5px hsla(0, 0%, 0%, 0.07);
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 	transition: all 0.2s ease-in-out;
 
 	color: var(
