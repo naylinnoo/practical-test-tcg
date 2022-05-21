@@ -8,7 +8,7 @@ export const Container = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	z-index: 9999;
+	z-index: 99;
 `
 export const FilterWrapper = styled.div`
 	display: grid;
@@ -78,12 +78,12 @@ export const Select = styled(ReactSelect)`
 	.Select__control {
 		border: 0 transparent;
 		border-radius: 0;
-		z-index: 9999;
+		z-index: 99;
 	}
 	.Select__placeholder {
 		color: var(--filter_text);
 	}
 	> .Select_menu {
-		z-index: 9999;
+		z-index: 99;
 	}
 `

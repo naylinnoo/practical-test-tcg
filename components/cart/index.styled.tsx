@@ -23,6 +23,7 @@ export const CartButton = styled.button`
 	border-radius: 0.5rem;
 	border: 0;
 	outline: 0;
+	z-index: 9999;
 
 	font-weight: 500;
 	font-size: 12px;

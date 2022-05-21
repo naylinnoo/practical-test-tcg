@@ -8,6 +8,7 @@ import {
 	ItemCount,
 } from '../cart/index.styled'
 import { useState } from 'react'
+import CartModal from '../cart/modal'
 
 type LayoutProps = {
 	children: React.ReactNode
@@ -19,8 +20,15 @@ const Layout = (props: LayoutProps) => {
 	const { children } = props
 	return (
 		<>
+			{isCartActive && (
+				<CartModal
+					isCartActive={isCartActive}
+					onClick={() => setIsCartActive(!isCartActive)}
+				/>
+			)}
 			<Navbar />
 			<Body>{children}</Body>
+
 			<CartButtonWrapper>
 				<CartButton
 					isCartActive={isCartActive}
