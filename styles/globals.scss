@@ -24,6 +24,21 @@
 	--cart_text: #{$cart_text};
 	--cart_noti: #{$cart_noti};
 	--cart_cancel: #{$cart_cancel};
+	--cart_clear: #{$cart_clear};
+
+	--total_item_value: #{$total_item_value};
+	--total_price_value: #{$total_price_value};
+	--pay: #{$pay};
+
+	--item_per_card: #{$item_per_card};
+	--item_quantity_left: #{$item_quantity_left};
+	--item_card_left: #{$item_card_left};
+	--item_card_left_text: #{$item_card_left_text};
+	--item_quantity: #{$item_quantity};
+	--item_price: #{$item_price};
+	--item_can_go: #{$item_can_go};
+	--item_cannot_go: #{$item_cannot_go};
+	--item_not_avaiable: #{$item_not_avaiable};
 }
 
 html,

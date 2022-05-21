@@ -15,7 +15,7 @@ type LayoutProps = {
 }
 
 const Layout = (props: LayoutProps) => {
-	const [isCartActive, setIsCartActive] = useState(false)
+	const [isCartActive, setIsCartActive] = useState(true)
 
 	const { children } = props
 	return (
