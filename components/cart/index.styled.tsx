@@ -1,3 +1,4 @@
+import { type } from 'os'
 import styled from 'styled-components'
 
 export const CartButtonWrapper = styled.div`
@@ -9,22 +10,31 @@ export const CartButtonWrapper = styled.div`
 	bottom: 2.5rem;
 `
 
-export const CartIcon = styled.img`
-	padding-right: 0.5rem;
+export const CartButtonTitle = styled.p`
+	padding-left: 0.5rem;
 `
 
+type CartButtonProps = {
+	isCartActive?: boolean
+}
+
 export const CartButton = styled.button`
-	background: var(--cart_button_bg);
 	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 	border-radius: 0.5rem;
 	border: 0;
 	outline: 0;
-	padding: 0.5rem 1rem;
 
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 14px;
-
+	${({ isCartActive }: CartButtonProps) =>
+		isCartActive
+			? `	background: var(--cart_cancel);
+          padding: 0.8rem 0.8rem;
+        `
+			: `	background: var(--cart_button_bg);
+          padding: 0.3rem 0.8rem;
+        `}
 	color: var(--cart_text);
 
 	display: flex;

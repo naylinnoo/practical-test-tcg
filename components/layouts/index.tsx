@@ -3,26 +3,36 @@ import Navbar from '@/components/layouts/nav'
 import { Fader } from './fader/index.styled'
 import {
 	CartButton,
+	CartButtonTitle,
 	CartButtonWrapper,
-	CartIcon,
 	ItemCount,
 } from '../cart/index.styled'
+import { useState } from 'react'
 
 type LayoutProps = {
 	children: React.ReactNode
 }
 
 const Layout = (props: LayoutProps) => {
+	const [isCartActive, setIsCartActive] = useState(false)
+
 	const { children } = props
 	return (
 		<>
 			<Navbar />
 			<Body>{children}</Body>
 			<CartButtonWrapper>
-				<CartButton>
-					<ItemCount>3</ItemCount>
-					<CartIcon src="/assets/Cart.svg" />
-					View Cart
+				<CartButton
+					isCartActive={isCartActive}
+					onClick={() => setIsCartActive(!isCartActive)}
+				>
+					{!isCartActive && <ItemCount>3</ItemCount>}
+					<img
+						src={`/assets/${isCartActive ? `Close` : `Cart`}.svg`}
+					/>
+					{!isCartActive && (
+						<CartButtonTitle>`View Cart`</CartButtonTitle>
+					)}
 				</CartButton>
 			</CartButtonWrapper>
 			<Fader />
