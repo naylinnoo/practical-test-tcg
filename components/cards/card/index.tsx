@@ -13,21 +13,32 @@ import {
 	Title,
 } from './index.styled'
 
-const Card: FC = () => {
+import type { Card as CardType } from '@/models/types'
+
+type CardProps = {
+	card: CardType
+}
+
+const Card = (props: CardProps) => {
 	const [isSelected, setIsSelected] = useState(false)
+	const { card } = props
+
 	return (
 		<>
 			<Container>
 				<ImageWrapper>
-					<Image src={`https://images.pokemontcg.io/xy1/1.png`} />
+					<Image src={card.images.large} alt={card.name} />
 				</ImageWrapper>
 				<ContentWrapper>
 					<Content>
-						<Title>Pokemon</Title>
-						<Rarity>Very Rare</Rarity>
+						<Title>{card.name}</Title>
+						<Rarity>{card.rarity}</Rarity>
 						<PriceQuantityWrapper>
-							<Price>$1.99</Price>
-							<Quantity>3 Left</Quantity>
+							<Price>
+								${card.cardmarket.prices.averageSellPrice}
+							</Price>
+
+							<Quantity>{card.set.total} Left</Quantity>
 						</PriceQuantityWrapper>
 					</Content>
 					<Button
