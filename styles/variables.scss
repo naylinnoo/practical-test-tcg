@@ -1,0 +1,42 @@
+// Colors
+$background: white;
+$background_secondary: #E5E5E5;
+
+$button: #FDCE29;
+$button_selected: #1D1C1C;
+
+$button_text: #1D1C1C;
+$button_selected_text: #FFFFFf;
+
+$primary: white;
+$secondary: #298BFD;
+$alert : red;
+$success: #5DDD48;
+
+$color_base: black;
+$color_1:#6A6969;
+$color_2:#BCBBBB;
+$color_3:#0F6DB0;
+$color_4:#FD2929;
+
+$title: $color_base;
+$nav_bg: $background;
+$background: $background_secondary;
+
+$filter_background: $background;
+$filter_text: $color_2;
+
+$card_title: $color_base;
+$card_rarity: $color_3;
+$card_price: $color_1;
+$card_qty: $color_1;
+$card_button: $button;
+$card_button_selected: $button_selected;
+$card_button_text: $button_text;
+$card_button_selected_text: $button_selected_text;
+
+$cart_bg: $background;
+$cart_button_bg: $secondary;
+$cart_text: $primary;
+$cart_noti: $alert;
+$cart_cancel: $alert;
