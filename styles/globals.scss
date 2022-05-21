@@ -1,37 +1,35 @@
-@import "./variables";
+@import './variables';
 
 :root {
+	--title: #{$title};
+	--nav_bg: #{$nav_bg};
+	--background: #{$background};
 
- --title:#{$title};
- --nav_bg: #{$nav_bg};
- --background: #{$background};
+	--filter_background: #{$filter_background};
+	--filter_text: #{$filter_text};
+	--filter_border: #{$filter_border};
 
- --filter_background: #{$background};
- --filter_text: #{$filter_text};
+	--card_title: #{$card_title};
+	--card_rarity: #{$card_rarity};
+	--card_price: #{$card_price};
+	--card_qty: #{$card_qty};
+	--card_button: #{$card_button};
+	--card_button_selected: #{$card_button_selected};
+	--card_button_text: #{$card_button_text};
+	--card_button_selected_text: #{$card_button_selected_text};
 
- --card_title: #{$card_title};
- --card_rarity: #{$card_rarity};
- --card_price: #{$card_price};
- --card_qty: #{$card_qty};
- --card_button: #{$card_button};
- --card_button_selected: #{$card_button_selected};
- --card_button_text: #{$card_button_text};
- --card_button_selected_text: #{$card_button_selected_text};
-
- --cart_bg: #{$cart_bg};
- --cart_button_bg: #{$cart_button_bg};
- --cart_text: #{$cart_text};
- --cart_noti: #{$cart_noti};
- --cart_cancel: #{$cart_cancel};
-
+	--cart_bg: #{$cart_bg};
+	--cart_button_bg: #{$cart_button_bg};
+	--cart_text: #{$cart_text};
+	--cart_noti: #{$cart_noti};
+	--cart_cancel: #{$cart_cancel};
 }
-
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  background-color: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
+	background-color: var(--background);
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }

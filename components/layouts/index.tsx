@@ -8,10 +8,10 @@ type LayoutProps = {
 const Layout = (props: LayoutProps) => {
 	const { children } = props
 	return (
-		<Body>
+		<>
 			<Navbar />
-			{children}
-		</Body>
+			<Body>{children}</Body>
+		</>
 	)
 }
 

@@ -1,30 +1,31 @@
 // Colors
 $background: white;
-$background_secondary: #E5E5E5;
+$background_secondary: #e5e5e5;
 
-$button: #FDCE29;
-$button_selected: #1D1C1C;
+$button: #fdce29;
+$button_selected: #1d1c1c;
 
-$button_text: #1D1C1C;
-$button_selected_text: #FFFFFf;
+$button_text: #1d1c1c;
+$button_selected_text: #ffffff;
 
 $primary: white;
-$secondary: #298BFD;
-$alert : red;
-$success: #5DDD48;
+$secondary: #298bfd;
+$alert: red;
+$success: #5ddd48;
 
 $color_base: black;
-$color_1:#6A6969;
-$color_2:#BCBBBB;
-$color_3:#0F6DB0;
-$color_4:#FD2929;
+$color_1: #6a6969;
+$color_2: #bcbbbb;
+$color_3: #0f6db0;
+$color_4: #fd2929;
 
 $title: $color_base;
 $nav_bg: $background;
 $background: $background_secondary;
 
-$filter_background: $background;
+$filter_background: $primary;
 $filter_text: $color_2;
+$filter_border: $color_2;
 
 $card_title: $color_base;
 $card_rarity: $color_3;
