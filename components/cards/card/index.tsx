@@ -32,10 +32,13 @@ const Card = (props: CardProps) => {
 				<ContentWrapper>
 					<Content>
 						<Title>{card.name}</Title>
-						<Rarity>{card.rarity}</Rarity>
+						{/* Need to show something if there is no data */}
+						<Rarity>{card.rarity ?? `\xa0`}</Rarity>
 						<PriceQuantityWrapper>
 							<Price>
-								${card.cardmarket.prices.averageSellPrice}
+								{card.cardmarket.prices.averageSellPrice
+									? `$${card.cardmarket.prices.averageSellPrice}`
+									: `No Price`}
 							</Price>
 
 							<Quantity>{card.set.total} Left</Quantity>
