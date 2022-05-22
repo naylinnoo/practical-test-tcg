@@ -5,6 +5,7 @@ import {
 	LoadMoreWrapper,
 } from '@/components/cards/index.styled'
 import Filter from '@/components/filter'
+import { MiddleMan } from '@/components/layouts/index.styled'
 import { CardsData } from '@/models/data'
 import fetcher from 'fetcher'
 import { useState } from 'react'
@@ -16,15 +17,19 @@ type HomeProps = {
 
 const Home = (props: HomeProps) => {
 	const [pageSize, setPageSize] = useState(12)
+
+	const [query, setQuery] = useState<string>('')
 	const request = {
 		pageSize: pageSize,
+		q: query,
 	}
 	const { data, error } = useSWR([`/cards`, request], fetcher, {
 		fallbackData: props.initialCardsData,
 	})
 
-	if (error) return <div>failed to load</div>
-	if (!data) return <div>loading...</div>
+	console.log(data)
+	if (error) return <MiddleMan>failed to load</MiddleMan>
+	if (!data) return <MiddleMan>loading...</MiddleMan>
 
 	const loadMoreData = () => {
 		setPageSize(pageSize + 12)
@@ -32,17 +37,24 @@ const Home = (props: HomeProps) => {
 
 	return (
 		<>
-			<Filter />
+			<Filter onSubmit={(fields) => setQuery(fields)} />
 			<CardsWrapper>
 				{data.data?.map((value: any) => {
 					return <Card key={value.id} card={value} />
 				})}
 			</CardsWrapper>
-			<LoadMoreWrapper>
-				<LoadMore onClick={() => loadMoreData()}>
-					load more data
-				</LoadMore>
-			</LoadMoreWrapper>
+			{data.data.length === 0 ? (
+				<MiddleMan>
+					No such data. Please contact Professor Oak if you found new
+					type of Pokemon.
+				</MiddleMan>
+			) : (
+				<LoadMoreWrapper>
+					<LoadMore onClick={() => loadMoreData()}>
+						load more data
+					</LoadMore>
+				</LoadMoreWrapper>
+			)}
 		</>
 	)
 }
