@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const ItemWrapper = styled.div`
 	display: grid;
-	grid-template-columns: 5rem 1fr 3rem;
+	grid-template-columns: 5rem 1fr 4rem;
 	gap: 2rem;
 	margin-bottom: 3rem;
 `
@@ -68,6 +68,9 @@ export const Quantity = styled.p`
 	padding-right: 0.5rem;
 	color: var(--item_quantity);
 `
+type IncreaseButtonProps = {
+	canIncrease: boolean
+}
 
 export const IncreaseButton = styled.button`
 	border: 0;
@@ -78,8 +81,19 @@ export const IncreaseButton = styled.button`
 	color: var(--item_can_go);
 	display: block;
 	background-size: cover;
-	background: url(/assets/Increase.svg) no-repeat;
+	${({ canIncrease }: IncreaseButtonProps) => {
+		return canIncrease
+			? css`
+					background: url(/assets/Increase.svg) no-repeat;
+			  `
+			: css`
+					background: url(/assets/IncreaseDisabled.svg) no-repeat;
+			  `
+	}}
 `
+type DecreaseButtonProps = {
+	canDecrease: boolean
+}
 
 export const DecreaseButton = styled.button`
 	border: 0;
@@ -89,7 +103,15 @@ export const DecreaseButton = styled.button`
 	color: var(--item_can_go);
 	display: block;
 	background-size: cover;
-	background: url(/assets/Remove.svg) no-repeat;
+	${({ canDecrease }: DecreaseButtonProps) => {
+		return canDecrease
+			? css`
+					background: url(/assets/Decrease.svg) no-repeat;
+			  `
+			: css`
+					background: url(/assets/Remove.svg) no-repeat;
+			  `
+	}}
 `
 
 export const TotalPriceTitle = styled.p`

@@ -1,6 +1,10 @@
 import { Fader, StickyFader } from '@/components/layouts/fader/index.styled'
+import { MiddleMan } from '@/components/layouts/index.styled'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { clearAll } from '@/store/slices/cartSlice'
 import useOutsideClick from 'public/hooks/useOutsideClick'
 import { useRef } from 'react'
+import useSWR from 'swr'
 import {
 	ClearAllButton,
 	ItemsScrollable,
@@ -17,6 +21,7 @@ type CartModalProps = {
 
 const CartModal = ({ onClick, isCartActive }: CartModalProps) => {
 	const ref = useRef<HTMLDivElement>(null)
+	const dispatch = useAppDispatch()
 
 	// useOutsideClick(ref, () => {
 	// 	console.log(isCartActive)
@@ -24,24 +29,35 @@ const CartModal = ({ onClick, isCartActive }: CartModalProps) => {
 	// 		onClick()
 	// 	}
 	// })
+	const { items } = useAppSelector((state) => state.cart)
+	const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0)
+	const totalPrice = items.reduce(
+		(acc, item, index) => acc + item.price * items[index].quantity,
+		0
+	)
 
 	return (
 		<ModalWrapper>
 			<Modal ref={ref}>
 				<ItemsWrapper>
 					<ItemsScrollable>
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
+						{items.length === 0 && (
+							<MiddleMan>
+								Get yourself some cards, mate!
+							</MiddleMan>
+						)}
+						{items.map((value) => {
+							return <CartItem key={value.id} {...value} />
+						})}
 					</ItemsScrollable>
 					<StickyFader>
-						<ClearAllButton>Clear All</ClearAllButton>
+						<ClearAllButton onClick={() => dispatch(clearAll())}>
+							Clear All
+						</ClearAllButton>
 					</StickyFader>
 				</ItemsWrapper>
 
-				<CartSummary />
+				<CartSummary quantity={totalQuantity} price={totalPrice} />
 			</Modal>
 		</ModalWrapper>
 	)

@@ -42,7 +42,7 @@ const Home = (props: HomeProps) => {
 					return <Card key={value.id} card={value} />
 				})}
 			</CardsWrapper>
-			{data.data.length === 0 ? (
+			{data.data?.length === 0 ? (
 				<MiddleMan>
 					No such data. Please contact Professor Oak if you found new
 					type of Pokemon.

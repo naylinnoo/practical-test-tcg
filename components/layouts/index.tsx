@@ -9,6 +9,7 @@ import {
 } from '../cart/index.styled'
 import { useState } from 'react'
 import CartModal from '../cart/modal'
+import { useAppSelector } from '@/store/hooks'
 
 type LayoutProps = {
 	children: React.ReactNode
@@ -18,6 +19,8 @@ const Layout = (props: LayoutProps) => {
 	const [isCartActive, setIsCartActive] = useState(false)
 
 	const { children } = props
+	const { items } = useAppSelector((state) => state.cart)
+
 	return (
 		<>
 			{isCartActive && (
@@ -34,7 +37,7 @@ const Layout = (props: LayoutProps) => {
 					isCartActive={isCartActive}
 					onClick={() => setIsCartActive(!isCartActive)}
 				>
-					{!isCartActive && <ItemCount>3</ItemCount>}
+					{!isCartActive && <ItemCount>{items.length}</ItemCount>}
 					<img
 						src={`/assets/${isCartActive ? `Close` : `Cart`}.svg`}
 					/>

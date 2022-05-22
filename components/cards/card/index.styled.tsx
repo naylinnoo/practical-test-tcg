@@ -80,7 +80,7 @@ export const Quantity = styled.p`
 `
 
 type ButtonProps = {
-	isSelected: boolean
+	isSelected: any
 	isAvailable: boolean
 }
 

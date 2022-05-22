@@ -1,3 +1,7 @@
+import { MiddleMan } from '@/components/layouts/index.styled'
+import { useAppDispatch } from '@/store/hooks'
+import { addCard, removeCard } from '@/store/slices/cartSlice'
+import useSWR from 'swr'
 import {
 	ActionWrapper,
 	DecreaseButton,
@@ -14,27 +18,58 @@ import {
 	TotalPriceTitle,
 } from './index.styled'
 
-const CartItem = () => {
+type CartItemProps = {
+	id: string
+	quantity: number
+	price: number
+}
+const CartItem = ({ id, quantity, price }: CartItemProps) => {
+	const dispatch = useAppDispatch()
+	const { data, error } = useSWR([`/cards/${id}`])
+
+	if (!data) return <MiddleMan>loading...</MiddleMan>
+	const card = data.data
+
+	const increaseQuantity = () => {
+		dispatch(addCard({ id, quantity: 1, price: price }))
+	}
+
+	const decreaseQuantity = () => {
+		dispatch(removeCard({ id, quantity: 1, price: price }))
+	}
+
 	return (
 		<ItemWrapper>
-			<Image src={`https://images.pokemontcg.io/xy1/1.png`} />
+			<Image src={card.images.small} />
 			<InfoWrapper>
 				<div>
-					<Name>Banana</Name>
-					<Price>$99</Price>
+					<Name>{card.name}</Name>
+					<Price>${card.cardmarket.prices.averageSellPrice}</Price>
 				</div>
-				<Stock>9</Stock>
+				<Stock> {card.set.total}</Stock>
 			</InfoWrapper>
 			<ActionWrapper>
 				<QuantityWrapper>
-					<Quantity>2</Quantity>
+					<Quantity>{quantity}</Quantity>
 					<div>
-						<IncreaseButton />
-						<DecreaseButton />
+						<IncreaseButton
+							canIncrease={quantity < card.set.total}
+							disabled={quantity >= card.set.total}
+							onClick={increaseQuantity}
+						/>
+						<DecreaseButton
+							canDecrease={quantity > 1}
+							onClick={decreaseQuantity}
+						/>
 					</div>
 				</QuantityWrapper>
 				<TotalPriceTitle>Price</TotalPriceTitle>
-				<TotalPrice>$99</TotalPrice>
+				<TotalPrice>
+					$
+					{(
+						card.cardmarket.prices.averageSellPrice * quantity
+					).toFixed(2)}
+				</TotalPrice>
 			</ActionWrapper>
 		</ItemWrapper>
 	)

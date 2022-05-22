@@ -8,18 +8,21 @@ import {
 	TotalPrice,
 	TotalPriceValue,
 } from './index.styled'
-
-const CartSummary = () => {
+type CartItemProps = {
+	quantity: number
+	price: number
+}
+const CartSummary = ({ quantity, price }: CartItemProps) => {
 	return (
 		<>
 			<SummaryWrapper>
 				<TextWrapper>
 					<TotalCard>Total Cards</TotalCard>
-					<TotalCardValue>9</TotalCardValue>
+					<TotalCardValue>{quantity}</TotalCardValue>
 				</TextWrapper>
 				<TextWrapper>
 					<TotalPrice>Total Price</TotalPrice>
-					<TotalPriceValue>$99</TotalPriceValue>
+					<TotalPriceValue>${price}</TotalPriceValue>
 				</TextWrapper>
 				<PayButtonWrapper>
 					<PayButton>Pay Now</PayButton>
