@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import ReactSelect from 'react-select'
 import { device } from 'consts/ScreenSize'
+import { Field } from 'formik'
 
 export const Container = styled.div`
 	position: relative;
@@ -10,10 +11,10 @@ export const Container = styled.div`
 	width: 100%;
 	z-index: 99;
 `
-export const FilterWrapper = styled.div`
+export const FilterWrapper = styled.form`
 	display: grid;
-	grid-template-columns: 1fr 80px 80px 70px;
-	width: 40%;
+	grid-template-columns: 1fr 8rem 10rem 10rem;
+	width: 60%;
 
 	> * {
 		border: 0;
@@ -61,7 +62,7 @@ export const FilterWrapper = styled.div`
 	}
 `
 
-export const Input = styled.input`
+export const Input = styled(Field)`
 	background-color: var(--filter_background);
 	font-size: 14px;
 	line-height: 21px;

@@ -43,6 +43,17 @@ export const ItemsScrollable = styled.div`
 	}
 `
 
+export const PaidWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`
+
+export const Paid = styled.img`
+	width: auto;
+	height: 90%;
+	text-align: center;
+`
 export const ClearAllButton = styled.p`
 	font-weight: 400;
 	font-size: 12px;

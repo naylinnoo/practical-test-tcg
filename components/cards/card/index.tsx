@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import {
 	Button,
 	Container,
@@ -13,28 +13,73 @@ import {
 	Title,
 } from './index.styled'
 
-const Card: FC = () => {
-	const [isSelected, setIsSelected] = useState(false)
+import type { Card as CardType } from '@/models/types'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { addCard } from '@/store/slices/cartSlice'
+
+type CardProps = {
+	card: CardType
+}
+
+const Card = (props: CardProps) => {
+	const dispatch = useAppDispatch()
+	const { card } = props
+
+	const cart = useAppSelector((state) => state.cart)
+	const isSelected = cart.items.find((item) => item.id === card.id)
+
+	const selectCard = () => {
+		if (isSelected) {
+			return
+		} else {
+			dispatch(
+				addCard({
+					id: props.card.id,
+					quantity: 1,
+					price: props.card.cardmarket.prices.averageSellPrice ?? 0,
+				})
+			)
+		}
+	}
+
+	const isAvailable = () =>
+		card.cardmarket.prices.averageSellPrice ? true : false
+
 	return (
 		<>
 			<Container>
 				<ImageWrapper>
-					<Image src={`https://images.pokemontcg.io/xy1/1.png`} />
+					<Image src={card.images.large} alt={card.name} />
 				</ImageWrapper>
 				<ContentWrapper>
 					<Content>
-						<Title>Pokemon</Title>
-						<Rarity>Very Rare</Rarity>
+						<Title>{card.name}</Title>
+						{/* Need to show something if there is no data */}
+						<Rarity>{card.rarity ?? `\xa0`}</Rarity>
 						<PriceQuantityWrapper>
-							<Price>$1.99</Price>
-							<Quantity>3 Left</Quantity>
+							<Price>
+								{card.cardmarket.prices.averageSellPrice
+									? `$${card.cardmarket.prices.averageSellPrice}`
+									: `No Price`}
+							</Price>
+
+							<Quantity>{card.set.total} Left</Quantity>
 						</PriceQuantityWrapper>
 					</Content>
 					<Button
 						isSelected={isSelected}
-						onClick={() => console.log('You picked venosaur')}
+						isAvailable={isAvailable()}
+						onClick={() => {
+							isAvailable()
+								? selectCard()
+								: alert('This item is not available')
+						}}
 					>
-						{isSelected ? `Selected` : `Select Card`}
+						{card.cardmarket.prices.averageSellPrice
+							? isSelected
+								? `Selected`
+								: `Select Card`
+							: `Not Available`}
 					</Button>
 				</ContentWrapper>
 			</Container>
