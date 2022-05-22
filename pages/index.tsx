@@ -5,13 +5,13 @@ import {
 	LoadMoreWrapper,
 } from '@/components/cards/index.styled'
 import Filter from '@/components/filter'
-import { CardsResponse } from '@/models/responses'
+import { CardsData } from '@/models/data'
 import fetcher from 'fetcher'
 import { useState } from 'react'
 import useSWR from 'swr'
 
 type HomeProps = {
-	initialCardsData: CardsResponse
+	initialCardsData: CardsData
 }
 
 const Home = (props: HomeProps) => {

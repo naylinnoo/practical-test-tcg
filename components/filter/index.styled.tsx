@@ -12,8 +12,8 @@ export const Container = styled.div`
 `
 export const FilterWrapper = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 80px 80px 70px;
-	width: 40%;
+	grid-template-columns: 1fr 8rem 10rem 10rem;
+	width: 60%;
 
 	> * {
 		border: 0;
