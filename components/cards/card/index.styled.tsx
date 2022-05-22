@@ -81,6 +81,7 @@ export const Quantity = styled.p`
 
 type ButtonProps = {
 	isSelected: boolean
+	isAvailable: boolean
 }
 
 export const Button = styled.button`
@@ -98,16 +99,22 @@ export const Button = styled.button`
 	transition: all 0.2s ease-in-out;
 
 	color: var(
-		${({ isSelected }: ButtonProps) => {
-			return isSelected
-				? css`--card_button_selected_text`
-				: css`--card_button_text`
+		${({ isSelected, isAvailable }: ButtonProps) => {
+			return isAvailable
+				? isSelected
+					? css`--card_button_selected_text`
+					: css`--card_button_text`
+				: css`--card_button_selected_text`
 		}}
 	);
 
 	background-color: var(
-		${({ isSelected }: ButtonProps) => {
-			return isSelected ? css`--card_button_selected` : css`--card_button`
+		${({ isSelected, isAvailable }: ButtonProps) => {
+			return isAvailable
+				? isSelected
+					? css`--card_button_selected`
+					: css`--card_button`
+				: css`--card_button_unavailable`
 		}}
 	);
 

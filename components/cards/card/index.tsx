@@ -23,6 +23,9 @@ const Card = (props: CardProps) => {
 	const [isSelected, setIsSelected] = useState(false)
 	const { card } = props
 
+	const isAvailable = () =>
+		card.cardmarket.prices.averageSellPrice ? true : false
+
 	return (
 		<>
 			<Container>
@@ -46,9 +49,18 @@ const Card = (props: CardProps) => {
 					</Content>
 					<Button
 						isSelected={isSelected}
-						onClick={() => console.log('You picked venosaur')}
+						isAvailable={isAvailable()}
+						onClick={() => {
+							isAvailable()
+								? console.log('Selected')
+								: alert('This item is not available')
+						}}
 					>
-						{isSelected ? `Selected` : `Select Card`}
+						{card.cardmarket.prices.averageSellPrice
+							? isSelected
+								? `Selected`
+								: `Select Card`
+							: `Not Available`}
 					</Button>
 				</ContentWrapper>
 			</Container>
