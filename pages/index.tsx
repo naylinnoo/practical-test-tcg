@@ -16,7 +16,10 @@ type HomeProps = {
 
 const Home = (props: HomeProps) => {
 	const [pageSize, setPageSize] = useState(12)
-	const { data, error } = useSWR(`/cards?pageSize=${pageSize}`, fetcher, {
+	const request = {
+		pageSize: pageSize,
+	}
+	const { data, error } = useSWR([`/cards`, request], fetcher, {
 		fallbackData: props.initialCardsData,
 	})
 

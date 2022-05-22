@@ -1,16 +1,12 @@
-const fetcher = async (url: string) => {
-	try {
-		const response = await fetch(
-			`${process.env.NEXT_PUBLIC_API_URL}${url}`,
-			{
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json',
-				},
-			}
-		)
+import axios from 'axios'
 
-		return await response.json()
+const fetcher = async (url: string, params: JSON) => {
+	axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
+	axios.defaults.headers.post['Content-Type'] = 'application/json'
+
+	try {
+		const response = await axios.get(url, { params: params })
+		return await response.data
 	} catch (error) {
 		return error
 	}
