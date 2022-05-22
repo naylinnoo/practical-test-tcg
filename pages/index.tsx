@@ -27,7 +27,6 @@ const Home = (props: HomeProps) => {
 		fallbackData: props.initialCardsData,
 	})
 
-	console.log(data)
 	if (error) return <MiddleMan>failed to load</MiddleMan>
 	if (!data) return <MiddleMan>loading...</MiddleMan>
 
