@@ -11,6 +11,8 @@ import {
 	ItemsWrapper,
 	Modal,
 	ModalWrapper,
+	Paid,
+	PaidWrapper,
 } from './index.styled'
 import CartItem from './item'
 import CartSummary from './summary'
@@ -29,7 +31,7 @@ const CartModal = ({ onClick, isCartActive }: CartModalProps) => {
 	// 		onClick()
 	// 	}
 	// })
-	const { items } = useAppSelector((state) => state.cart)
+	const { items, paid } = useAppSelector((state) => state.cart)
 	const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0)
 	const totalPrice = items.reduce(
 		(acc, item, index) => acc + item.price * items[index].quantity,
@@ -39,25 +41,42 @@ const CartModal = ({ onClick, isCartActive }: CartModalProps) => {
 	return (
 		<ModalWrapper>
 			<Modal ref={ref}>
-				<ItemsWrapper>
-					<ItemsScrollable>
-						{items.length === 0 && (
-							<MiddleMan>
-								Get yourself some cards, mate!
-							</MiddleMan>
-						)}
-						{items.map((value) => {
-							return <CartItem key={value.id} {...value} />
-						})}
-					</ItemsScrollable>
-					<StickyFader>
-						<ClearAllButton onClick={() => dispatch(clearAll())}>
-							Clear All
-						</ClearAllButton>
-					</StickyFader>
-				</ItemsWrapper>
-
-				<CartSummary quantity={totalQuantity} price={totalPrice} />
+				{paid ? (
+					<PaidWrapper>
+						<div>
+							<Paid src="/assets/PaymentSuccess.svg" />
+							<p>Payment success</p>
+						</div>
+					</PaidWrapper>
+				) : (
+					<>
+						<ItemsWrapper>
+							<ItemsScrollable>
+								{items.length === 0 && (
+									<MiddleMan>
+										Get yourself some cards, mate!
+									</MiddleMan>
+								)}
+								{items.map((value) => {
+									return (
+										<CartItem key={value.id} {...value} />
+									)
+								})}
+							</ItemsScrollable>
+							<StickyFader>
+								<ClearAllButton
+									onClick={() => dispatch(clearAll())}
+								>
+									Clear All
+								</ClearAllButton>
+							</StickyFader>
+						</ItemsWrapper>
+						<CartSummary
+							quantity={totalQuantity}
+							price={totalPrice}
+						/>
+					</>
+				)}
 			</Modal>
 		</ModalWrapper>
 	)

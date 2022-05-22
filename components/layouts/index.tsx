@@ -9,17 +9,19 @@ import {
 } from '../cart/index.styled'
 import { useState } from 'react'
 import CartModal from '../cart/modal'
-import { useAppSelector } from '@/store/hooks'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { makePay } from '@/store/slices/cartSlice'
 
 type LayoutProps = {
 	children: React.ReactNode
 }
 
 const Layout = (props: LayoutProps) => {
+	const dispatch = useAppDispatch()
 	const [isCartActive, setIsCartActive] = useState(false)
 
 	const { children } = props
-	const { items } = useAppSelector((state) => state.cart)
+	const { items, paid } = useAppSelector((state) => state.cart)
 
 	return (
 		<>
@@ -35,7 +37,12 @@ const Layout = (props: LayoutProps) => {
 			<CartButtonWrapper>
 				<CartButton
 					isCartActive={isCartActive}
-					onClick={() => setIsCartActive(!isCartActive)}
+					onClick={() => {
+						setIsCartActive(!isCartActive)
+						if (paid) {
+							dispatch(makePay(false))
+						}
+					}}
 				>
 					{!isCartActive && <ItemCount>{items.length}</ItemCount>}
 					<img

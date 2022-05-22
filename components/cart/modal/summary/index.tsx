@@ -1,3 +1,5 @@
+import { useAppDispatch } from '@/store/hooks'
+import { makePay } from '@/store/slices/cartSlice'
 import {
 	PayButtonWrapper,
 	PayButton,
@@ -13,6 +15,7 @@ type CartItemProps = {
 	price: number
 }
 const CartSummary = ({ quantity, price }: CartItemProps) => {
+	const dispatch = useAppDispatch()
 	return (
 		<>
 			<SummaryWrapper>
@@ -25,7 +28,12 @@ const CartSummary = ({ quantity, price }: CartItemProps) => {
 					<TotalPriceValue>${price}</TotalPriceValue>
 				</TextWrapper>
 				<PayButtonWrapper>
-					<PayButton>Pay Now</PayButton>
+					<PayButton
+						onClick={() => dispatch(makePay(true))}
+						disabled={price === 0}
+					>
+						Pay Now
+					</PayButton>
 				</PayButtonWrapper>
 			</SummaryWrapper>
 		</>

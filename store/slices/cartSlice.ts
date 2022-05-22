@@ -8,10 +8,12 @@ type Item = {
 
 type CartState = {
 	items: Item[]
+	paid: boolean
 }
 
 const initialState: CartState = {
 	items: [],
+	paid: false,
 }
 
 export const cartSlice = createSlice({
@@ -38,12 +40,17 @@ export const cartSlice = createSlice({
 			}
 		},
 
+		makePay: (state, action: PayloadAction<boolean>) => {
+			state.paid = action.payload
+			state.items = []
+		},
+
 		clearAll: (state) => {
 			state.items = []
 		},
 	},
 })
 
-export const { addCard, removeCard, clearAll } = cartSlice.actions
+export const { addCard, removeCard, clearAll, makePay } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -58,16 +58,16 @@ const Home = (props: HomeProps) => {
 	)
 }
 
-export const getStaticProps = async () => {
-	const res = await fetch(
-		process.env.NEXT_PUBLIC_API_URL + '/cards?pageSize=12'
-	)
-	const data = await res.json()
+// export const getStaticProps = async () => {
+// 	const res = await fetch(
+// 		process.env.NEXT_PUBLIC_API_URL + '/cards?pageSize=12'
+// 	)
+// 	const data = await res.json()
 
-	return {
-		props: {
-			initialCardsData: data,
-		},
-	}
-}
+// 	return {
+// 		props: {
+// 			initialCardsData: data,
+// 		},
+// 	}
+// }
 export default Home
